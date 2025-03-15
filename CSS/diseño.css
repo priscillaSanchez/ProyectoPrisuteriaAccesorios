@@ -79,3 +79,32 @@ li{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
+
+.socials-a {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente si el contenedor tiene altura */
+    text-align: center; /* Asegura que el texto esté alineado al centro */
+    margin-top: 20px; /* Ajusta el margen superior si es necesario */
+  }
+  
+  .socials-a ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Quita los estilos de lista */
+    display: flex;
+    justify-content: center; /* Centra los íconos */
+  }
+  
+  .socials-a a {
+    color: white; /* Hace que los iconos sean blancos */
+    font-size: 24px; /* Ajusta el tamaño de los iconos */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    margin: 0 10px; /* Espaciado entre los iconos */
+    transition: color 0.3s ease; /* Suaviza el cambio de color */
+  }
+  
+  .socials-a a:hover {
+    color: #ddd; /* Color al pasar el cursor */
+  }
+  
