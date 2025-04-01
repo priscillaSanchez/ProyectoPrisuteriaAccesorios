@@ -245,3 +245,28 @@ function calcularEdad() {
     document.getElementById('edad').value = edad;
   }
 }
+//Seccion Joyeria Inicio
+let currentIndex = 0;
+
+function moveSlide(direction) {
+    const gallery = document.querySelector('.gallery');
+    const products = document.querySelectorAll('.product');
+    const visibleItems = 3;
+    const maxIndex = Math.max(0, products.length - visibleItems);
+    
+    // Actualizar índice con límites
+    currentIndex = Math.max(0, Math.min(currentIndex + direction, maxIndex));
+    
+    // Calcular ancho y aplicar transformación
+    const itemWidth = products[0].offsetWidth + 
+                     (parseInt(window.getComputedStyle(products[0]).marginLeft) || 0) + 
+                     (parseInt(window.getComputedStyle(products[0]).marginRight) || 0);
+    
+    // Mover la galería
+    gallery.style.transition = 'transform 0.3s ease';
+    gallery.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    
+    // Opcional: actualizar estado visual de flechas
+    document.querySelector('.arrow-left').style.opacity = currentIndex === 0 ? '0.5' : '1';
+    document.querySelector('.arrow-right').style.opacity = currentIndex === maxIndex ? '0.5' : '1';
+}
