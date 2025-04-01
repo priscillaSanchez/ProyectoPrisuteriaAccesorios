@@ -347,7 +347,6 @@ html {
   }
 }
 
-
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
@@ -442,7 +441,6 @@ html {
   .navmenu .dropdown ul ul {
     background-color: rgba(33, 37, 41, 0.1);
   }
-  
 
   .navmenu .dropdown>.dropdown-active {
     display: block;
