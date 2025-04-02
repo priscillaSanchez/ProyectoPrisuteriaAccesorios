@@ -239,27 +239,56 @@ function calcularEdad() {
   }
 }
 //Seccion Joyeria Inicio
-let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", function() {
+  let currentIndex = 0;
 
-function moveSlide(direction) {
-    const gallery = document.querySelector('.gallery');
-    const products = document.querySelectorAll('.product');
-    const visibleItems = 3;
-    const maxIndex = Math.max(0, products.length - visibleItems);
-    
-    // Actualizar índice con límites
-    currentIndex = Math.max(0, Math.min(currentIndex + direction, maxIndex));
-    
-    // Calcular ancho y aplicar transformación
-    const itemWidth = products[0].offsetWidth + 
-                     (parseInt(window.getComputedStyle(products[0]).marginLeft) || 0) + 
-                     (parseInt(window.getComputedStyle(products[0]).marginRight) || 0);
-    
-    // Mover la galería
-    gallery.style.transition = 'transform 0.3s ease';
-    gallery.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-    
-    // Opcional: actualizar estado visual de flechas
-    document.querySelector('.arrow-left').style.opacity = currentIndex === 0 ? '0.5' : '1';
-    document.querySelector('.arrow-right').style.opacity = currentIndex === maxIndex ? '0.5' : '1';
-}
+  function moveSlide(direction) {
+      console.log("Botón presionado:", direction); // Verifica si se detecta el clic
+      
+      const gallery = document.querySelector('.gallery');
+      const products = document.querySelectorAll('.product');
+
+      if (!gallery || products.length === 0) {
+          console.error("Error: No se encontraron productos o la galería");
+          return;
+      }
+
+      const visibleItems = 3;
+      const maxIndex = Math.max(0, products.length - visibleItems);
+
+      console.log("Max Index:", maxIndex);
+
+      // Actualizar índice con límites
+      let newIndex = currentIndex + direction;
+      if (newIndex < 0 || newIndex > maxIndex) {
+          console.warn("Límite alcanzado:", newIndex);
+          return; // No mover si está en el límite
+      }
+      currentIndex = newIndex;
+
+      // Obtener ancho del primer producto
+      const itemWidth = products[0].offsetWidth + 
+                       (parseInt(window.getComputedStyle(products[0]).marginLeft) || 0) + 
+                       (parseInt(window.getComputedStyle(products[0]).marginRight) || 0);
+
+      console.log("Ancho de cada producto:", itemWidth);
+      
+      // Mover la galería
+      gallery.style.transition = 'transform 0.3s ease';
+      gallery.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+      console.log("Índice actualizado:", currentIndex, "Transform:", `translateX(-${currentIndex * itemWidth}px)`);
+  }
+
+  // Asignar eventos a los botones
+  const leftArrow = document.querySelector(".arrow-left");
+  const rightArrow = document.querySelector(".arrow-right");
+
+  if (leftArrow && rightArrow) {
+      leftArrow.addEventListener("click", () => moveSlide(-1));
+      rightArrow.addEventListener("click", () => moveSlide(1));
+  } else {
+      console.error("No se encontraron los botones");
+  }
+});
+

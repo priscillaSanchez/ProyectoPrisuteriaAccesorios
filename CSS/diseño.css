@@ -79,20 +79,48 @@ li{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
-/*Navbar icono Ubicacion*/
-.navmenu .ubicacion img{
-  width: 90px; 
-  height: 90px; 
-  vertical-align: middle;
-  transition: transform 0.3s ease-in-out; 
+/*Navbar icono Ubicacion y la Bolsa de Compras*/
+.navmenu li:nth-last-child(2),
+.navmenu li:last-child {
+  margin: 0;
+  padding: 0;
 }
-.navmenu .ubicacion a {
+
+/* Create tighter spacing between just these two icons */
+.navmenu ul {
   display: flex;
-  align-items: center; /* Asegura que el texto y la imagen estén alineados */
-  gap: 5px; /* Espacio entre el texto y la imagen */
+  align-items: center;
 }
-.navmenu .ubicacion  img:hover{
-  transform: scale(1.1);
+
+/* Remove all space between icon list items */
+.navmenu li:nth-last-child(2),
+.navmenu li:last-child {
+  margin: 0;
+  padding: 0;
+}
+
+/* Make icon containers tight with no extra space */
+.navmenu .ubicacion,
+.navmenu .bolsaCompras {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 2px; /* Tiny margin between icons */
+}
+
+/* Size icons appropriately */
+.navmenu .ubicacion img,
+.navmenu .bolsaCompras img {
+  width: 70px; /* Smaller icons like in reference */
+  height: 70px;
+  vertical-align: middle;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Optional: Create a container for just these two icons */
+.navmenu li:nth-last-child(2),
+.navmenu li:last-child {
+  display: inline-flex;
 }
 
 /* Contenedor principal de la sección */
@@ -108,7 +136,7 @@ li{
 .gallery {
   display: flex;
   gap: 20px;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Producto individual */
