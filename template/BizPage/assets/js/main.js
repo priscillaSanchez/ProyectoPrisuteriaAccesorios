@@ -292,3 +292,45 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+
+
+// formulario
+  function enviarFormulario(event) {
+    event.preventDefault(); // Evitar el envío tradicional del formulario
+
+    // Calcular la edad
+    calcularEdad();
+
+    // Obtener los datos del formulario
+    var formData = new FormData(document.getElementById('contact-form'));
+
+    // Enviar los datos usando AJAX (fetch)
+    fetch('contact.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Mostrar el mensaje de éxito
+      if (data.success) {
+        alert('Tu mensaje ha sido enviado con éxito.');
+      } else {
+        alert('Hubo un error al enviar el mensaje.');
+      }
+    })
+    .catch(error => {
+      console.error('Error al enviar los datos:', error);
+      alert('Hubo un error al enviar el mensaje.');
+    });
+  }
+
+  function calcularEdad() {
+    var fechaNacimiento = new Date(document.getElementById('fecha_nacimiento').value);
+    var hoy = new Date();
+    var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    var mes = hoy.getMonth() - fechaNacimiento.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+      edad--;
+    }
+    document.getElementById('edad').value = edad;
+  }
