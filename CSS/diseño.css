@@ -132,6 +132,7 @@ li{
   overflow: hidden;
 }
 
+
 /* Galería de productos */
 .gallery {
   display: flex;
@@ -197,6 +198,8 @@ li{
 .arrow-right {
   right: 5px;
 }
+
+
 
 .socials-a {
     display: flex;

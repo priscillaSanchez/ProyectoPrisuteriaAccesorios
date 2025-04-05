@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blog - Prisutería Accesorios</title>
+  <title>Tienda - Prisutería Accesorios</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -30,7 +30,7 @@
 
 </head>
 
-<body class="blog-page">
+<body class="tienda">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -42,7 +42,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="/index.html" class="active">Inicio</a></li>
           <li><a href="acerca.html"> Acerca de Nosotros </a></li> <!--Historia, Servicios y Galería- Acerca del Sitio-->
           <li><a href="tienda.html">Tienda</a></li>
           <li><a href="blog.html"> Blog </a></li> <!--Pagina del tema principal de interes q puede contener menu emergentes -->
@@ -72,289 +72,284 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/page-title-bg.jpg);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url(/Imagenes/Fotos/FondoTienda.png);">
       <div class="container position-relative">
-        <h1>Blog</h1>
-        <p>¡Descubre un mundo de creatividad y estilo! 🌟 En este espacio, aprenderás todo sobre accesorios, desde su diseño hasta su creación, y mucho más. ¡Déjate inspirar y crea piezas únicas que reflejen tu personalidad! 💎✨ </p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Blog</li>
-          </ol>
-        </nav>
+        <h1>Tienda</h1>
+        <p>¡Descubre nuestra colección de accesorios únicos! 🛍️
+          Explora una variedad de piezas con estilo, diseñadas para resaltar tu personalidad y complementar tu look. 💎 Desde elegantes detalles hasta creaciones llenas de creatividad, aquí encontrarás el accesorio perfecto para cada ocasión. ¡Haz que tu estilo brille! ✨
+          
+           </p>
+       
       </div>
     </div><!-- End Page Title -->
-
-    <section id="Joyeria" class="seccion-Joyeria"  >
-      <div class="slider-container">
-        <button class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</button>
-        <div class="gallery">
-            <div class="product">
-                <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesCorazon.png" alt="Aretes Corazon DoradoPlateado">
-                <p>Aretes medianos Corazon Dorado Plateado</p>
-                <p class="price">₡5000</p>
+    <div class="container-tienda">
+      <section id="listaAccesorios">
+        <!-- Sección Joyería -->
+        <section class="seccion-Joyeria">
+          <div class="container position-relative">
+            <h2 class="text-center mb-5">Joyeria 💎</h2>
+            <div class="carousel-containerJoyeria">
+              <!-- Botón de navegación anterior -->
+              <button class="carousel-arrow prev" id="prevBtnJoyeria">&#10094;</button>
+              
+              <div class="carousel" id="productCarouselJoyeria">
+                <!-- Producto 1 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image ">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesCorazon.png" alt="Aretes Corazón Dorado Plateado">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Corazón Dorado Plateado</h2>
+                    <p class="product-description">Elegancia y estilo en una pieza encantadora. Perfectos para toda ocasión.</p>
+                    <p class="product-price">₡5.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 2 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/JoyeriaCollarGirasol.png" alt="Collar Girasol Giratorio">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collar Girasol Giratorio</h2>
+                    <p class="product-description">Con baño de oro y diseño giratorio, este collar es una joya única.</p>
+                    <p class="product-price">₡10.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 3 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Pulseras/JoyeriaPulseraTrebol.png" alt="Pulsera Trébol Negro">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Pulsera Trébol Negro</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡8.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 4 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaLazoChispa.png" alt="Aretes lazo chispita plateados">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes lazo chispita plateados</h2>
+                    <p class="product-description">Elegancia y estilo en una pieza encantadora. Perfectos para toda ocasión.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 5 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/JoyeriaCollarCorazonChispa.png" alt="Collar Corazon Chispa">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collar Corazon Chispa dorado acero</h2>
+                    <p class="product-description">Un diseño único para que puedas realzar tu belleza con este collar.</p>
+                    <p class="product-price">₡7.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 6 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Pulseras/JoyeriaPulseraTrebolRoja.png" alt="Pulsera trebol roja">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Pulsera Trebol rojo con baño de oro</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡8.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 7 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolNegro.png" alt="Aretes trebol negra">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Trebol negro</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 8 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolRojo.png" alt="Aretes trebol roja">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Trebol rojo</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 9 -->
+                <div class="product-card Joyeria">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/JoyeriaCollarFloresChispa.png" alt="Collar Flores Chispa">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collar Flor chispa con baño de oro acero</h2>
+                    <p class="product-description">Un diseño único para que puedas realzar tu belleza con este collar.</p>
+                    <p class="product-price">₡7.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Botón de navegación siguiente -->
+              <button class="carousel-arrow next" id="nextBtnJoyeria">&#10095;</button>
             </div>
-            <div class="product">
-                <img src="/Imagenes/Fotos/Collares/JoyeriaCollarGirasol.png" alt="Collar girasol dorado">
-                <p>Collar girasol giratorio largo con baño de oro acero</p>
-                <p class="price">₡10.000</p>
-            </div>
-            <div class="product">
-                <img src="/Imagenes/Fotos/Pulseras/JoyeriaPulseraTrebol.png" alt="Pulsera trebol negro">
-                <p>Pulsera Trebol negro con baño de oro </p>
-                <p class="price">₡8000</p>
-            </div>
-            <div class="product">
-                <img src="/Imagenes/Fotos/Aretes/JoyeriaLazoChispa.png" alt="Aretes lazo plateado">
-                <p>Aretes  lazo chispita medianos plateados</p>
-                <p class="price">₡6000</p>
-            </div>
-            <div class="product">
-                <img src="/Imagenes/Fotos/Collares/JoyeriaCollarCorazonChispa.png" alt="Collar Corazon Chispa">
-                <p>Collar Corazon Chispa dorado acero</p>
-                <p class="price">₡7000</p>
-            </div>
-            <div class="product">
-              <img src="/Imagenes/Fotos/Pulseras/JoyeriaPulseraTrebolRoja.png" alt="Pulsera trebol roja">
-              <p>Pulsera Trebol  rojo con baño de oro  </p>
-              <p class="price">₡8000</p>
           </div>
-          <div class="product">
-            <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolRojo.png" alt="Aretes trebol roja">
-            <p>Aretes Trebol  rojo   </p>
-            <p class="price">₡6000</p>
-        </div>
-        <div class="product">
-          <img src="/Imagenes/Fotos/Collares/JoyeriaCollarFloresChispa.png" alt="Collar Flores Chispa">
-          <p>Collar Flor  chispa  con baño de oro acero  </p>
-          <p class="price">₡7000</p>
-      </div>
-      <div class="product">
-        <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolNegro.png" alt="Aretes trebol negra">
-        <p>Aretes Trebol  negro  </p>
-        <p class="price">₡6000</p>
-    </div>
-        </div>
-        <button class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</button>
-    </div>
+        </section>
+
+        <!--Seccion Aretes-->
+        <section id="AretesTienda" class="seccion-Aretes">
+          <div  class="container position-relative">
+            <h2 class="text-center mb-5">Aretes✨</h2>
+            <div class="carousel-containerAretes">
+              <button class="carousel-arrow prev" id="prevBtnAretes">&#10094;</button>
+              
+              <div class="carousel" id="productCarouselAretes">
+                <!-- Producto 1 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesCorazon.png" alt="Aretes Corazón Dorado Plateado">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Corazón Dorado Plateado</h2>
+                    <p class="product-description">Elegancia y estilo en una pieza encantadora. Perfectos para toda ocasión.</p>
+                    <p class="product-price">₡5.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 2 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaLazoChispa.png" alt="Aretes lazo chispita plateados">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes lazo chispita plateados</h2>
+                    <p class="product-description">Elegancia y estilo en una pieza encantadora. Perfectos para toda ocasión.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 3 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolNegro.png" alt="Aretes trebol negra">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Trebol negro</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 4 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolRojo.png" alt="Aretes trebol roja">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Trebol rojo</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 5 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/Arete angel 1_20240605_190007_0000.jpg" alt="Aretes Angel Blancos">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Angel Blancos</h2>
+                    <p class="product-description">Un diseño único para que puedas realzar tu belleza con este collar.</p>
+                    <p class="product-price">₡3.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 6 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/Arete1Perla.jpg" alt="Aretes Perla Redonda Natural">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Arete Perla Redonda Natural</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡4.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 7 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/Arete1PerlaGrande.jpg" alt="Aretes Perla">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Perla</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡3.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 8 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolRojo.png" alt="Aretes trebol roja">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Aretes Trebol rojo</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 9 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/JoyeriaCollarFloresChispa.png" alt="Collar Flores Chispa">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collar Flor chispa con baño de oro acero</h2>
+                    <p class="product-description">Un diseño único para que puedas realzar tu belleza con este collar.</p>
+                    <p class="product-price">₡7.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+              </div>
+    
+              <button class="carousel-arrow next" id="nextBtnAretes">&#10095;</button>
+            </div>
+          </div>
+        </section>
       </section>
-
-    <!-- Blog Posts Section -->
-    <section id="blog-posts" class="blog-posts section">
-
-      <div class="container">
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <article class="d-flex flex-column">
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
-              </h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                </ul>
-              </div>
-
-              <div class="content">
-                <p>
-                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                </p>
-              </div>
-
-              <div class="read-more mt-auto align-self-end">
-                <a href="blog-details.html">Read More</a>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article class="d-flex flex-column">
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-              </h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                </ul>
-              </div>
-
-              <div class="content">
-                <p>
-                  Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
-                </p>
-              </div>
-
-              <div class="read-more mt-auto align-self-end">
-                <a href="blog-details.html">Read More</a>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article class="d-flex flex-column">
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="blog-details.html">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
-              </h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                </ul>
-              </div>
-
-              <div class="content">
-                <p>
-                  Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis.
-                </p>
-              </div>
-
-              <div class="read-more mt-auto align-self-end">
-                <a href="blog-details.html">Read More</a>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article class="d-flex flex-column">
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="blog-details.html">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
-              </h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                </ul>
-              </div>
-
-              <div class="content">
-                <p>
-                  Aspernatur rerum perferendis et sint. Voluptates cupiditate voluptas atque quae. Rem veritatis rerum enim et autem. Saepe atque cum eligendi eaque iste omnis a qui.
-                </p>
-              </div>
-
-              <div class="read-more mt-auto align-self-end">
-                <a href="blog-details.html">Read More</a>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article class="d-flex flex-column">
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-5.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="blog-details.html">Accusamus quaerat aliquam qui debitis facilis consequatur</a>
-              </h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                </ul>
-              </div>
-
-              <div class="content">
-                <p>
-                  In itaque assumenda aliquam voluptatem qui temporibus iusto nisi quia. Autem vitae quas aperiam nesciunt mollitia tempora odio omnis. Ipsa odit sit ut amet necessitatibus. Quo ullam ut corrupti autem consequuntur totam dolorem.
-                </p>
-              </div>
-
-              <div class="read-more mt-auto align-self-end">
-                <a href="blog-details.html">Read More</a>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article class="d-flex flex-column">
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-6.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="blog-details.html">Distinctio provident quibusdam numquam aperiam aut</a>
-              </h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                </ul>
-              </div>
-
-              <div class="content">
-                <p>
-                  Expedita et temporibus eligendi enim molestiae est architecto praesentium dolores. Illo laboriosam officiis quis. Labore officia quia sit voluptatem nisi est dignissimos totam. Et voluptate et consectetur voluptatem id dolor magni impedit. Omnis dolores sit.
-                </p>
-              </div>
-
-              <div class="read-more mt-auto align-self-end">
-                <a href="blog-details.html">Read More</a>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-        </div>
-      </div>
-
-    </section><!-- /Blog Posts Section -->
-
-    <!-- Blog Pagination Section -->
-    <section id="blog-pagination" class="blog-pagination section">
-
-      <div class="container">
-        <div class="d-flex justify-content-center">
-          <ul>
-            <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#" class="active">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li>...</li>
-            <li><a href="#">10</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-          </ul>
-        </div>
-      </div>
-
-    </section><!-- /Blog Pagination Section -->
+    </div>
+    
 
   </main>
 
@@ -427,7 +422,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="/template/BizPage/assets/js/main.js"></script>
 
 </body>
 

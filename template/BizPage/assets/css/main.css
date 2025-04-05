@@ -66,6 +66,7 @@ body {
   font-family: var(--default-font);
 }
 
+
 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -191,11 +192,24 @@ h6 {
   background-color: #f8f8f8;
 }
 
-.accesorio {
+.seccion-accesorios a {
   width: 30%;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.accesorio {
+  width: 100%;
   position: relative;
   text-align: center;
   overflow: hidden;
+  cursor: pointer; /* Le da efecto de botón */
+  transition: transform 0.3s ease;
+}
+
+.accesorio:hover {
+  transform: scale(1.03);
 }
 
 .accesorio img {
@@ -218,6 +232,7 @@ h6 {
   font-weight: bold;
   text-transform: uppercase;
 }
+
 
 /* Desplazamiento suave */
 html {
@@ -2391,9 +2406,9 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
+/*.starter-section {
   /* Add your styles here */
-}
+
 
 /*--------------------------------------------------------------
 # Widgets
@@ -2565,3 +2580,153 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+/*--------------------------------------------------------------
+Tienda
+--------------------------------------------------------------*/
+.tienda{
+  margin: 0;
+    padding: 0;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+    background: white;
+    overflow-x: hidden; /* Evita scroll horizontal si hay desbordamiento */
+}
+.container-tienda{
+  max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+}
+.carousel-containerJoyeria {
+  width: 100vw; /* Ocupa todo el ancho de la pantalla */
+  max-width: 100%; /* Evita cualquier restricción de ancho */
+  margin: 0; /* Elimina márgenes laterales */
+  padding: 0; /* Elimina relleno extra */
+ 
+}
+
+.carousel {
+  display: flex;
+    flex-wrap: nowrap; /* Evita que los elementos bajen de línea */
+    
+    width: 100%;
+}
+
+.product-card {
+  flex: 0 0 calc(25% - 20px);
+  margin: 0 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+}
+
+.product-image {
+  height: 200px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.product-image img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.product-details {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 18px;
+  color: #caafd7;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #b76e79;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.add-to-cart {
+  background-color: #f55c94;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.add-to-cart:hover {
+  background-color: #f55c94;
+}
+
+/* Botones de navegación */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border: none;
+  font-size: 20px;
+  color: #555;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .product-card {
+      flex: 0 0 calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+      flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .product-card {
+      flex: 0 0 calc(100% - 20px);
+  }
+}
+
