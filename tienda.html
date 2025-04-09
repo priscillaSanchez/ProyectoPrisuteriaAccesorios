@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="tienda">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -39,12 +39,12 @@
         <h1 class="sitename">Prisutería Accesorios</h1>
       </a>
 
+     
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/index.html" class="active">Inicio</a></li>
+          <li><a href="index.html" >Inicio</a></li>
           <li><a href="acerca.html"> Acerca de Nosotros </a></li> <!--Historia, Servicios y Galería- Acerca del Sitio-->
           <li><a href="tienda.html">Tienda</a></li>
-          <li><a href="blog.html"> Blog </a></li> <!--Pagina del tema principal de interes q puede contener menu emergentes -->
           <li class="dropdown"><a href="#"><span>Sobre la Pagina</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li class=""><a href="autores.html"><span>Autores</span> <i class="bi bi-chevron-down"></i></a>
@@ -52,7 +52,7 @@
             </ul>
           </li>
           <li >
-            <a href="contacto.html#ubicacionPrisuteria" class="ubicacion">
+            <a href="contacto.html" class="ubicacion">
               <img src="/Imagenes/Iconos/IconoUbicacion.png" alt="Ubicación" >
             </a>
           </li>
@@ -66,9 +66,13 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
+
+
     </div>
   </header>
+
   <main class="main">
+
 
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade" style="background-image: url(/Imagenes/Fotos/FondoTienda.png);">
@@ -81,6 +85,7 @@
        
       </div>
     </div><!-- End Page Title -->
+
     <div class="container-tienda">
       <section id="listaAccesorios">
         <!-- Sección Joyería -->
@@ -169,8 +174,8 @@
                     <button class="add-to-cart">Agregar a la bolsa</button>
                   </div>
                 </div>
-    
-                <!-- Producto 7 -->
+    <!-- 
+                 Producto 7 
                 <div class="product-card Joyeria">
                   <div class="product-image">
                     <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolNegro.png" alt="Aretes trebol negra">
@@ -183,7 +188,7 @@
                   </div>
                 </div>
     
-                <!-- Producto 8 -->
+                 Producto 8
                 <div class="product-card Joyeria">
                   <div class="product-image">
                     <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolRojo.png" alt="Aretes trebol roja">
@@ -196,7 +201,7 @@
                   </div>
                 </div>
     
-                <!-- Producto 9 -->
+                 Producto 9
                 <div class="product-card Joyeria">
                   <div class="product-image">
                     <img src="/Imagenes/Fotos/Collares/JoyeriaCollarFloresChispa.png" alt="Collar Flores Chispa">
@@ -209,7 +214,7 @@
                   </div>
                 </div>
               </div>
-              
+            -->
               <!-- Botón de navegación siguiente -->
               <button class="carousel-arrow next" id="nextBtnJoyeria">&#10095;</button>
             </div>
@@ -302,46 +307,6 @@
                   </div>
                 </div>
     
-                <!-- Producto 7 -->
-                <div class="product-card Aretes">
-                  <div class="product-image">
-                    <img src="/Imagenes/Fotos/Aretes/Arete1PerlaGrande.jpg" alt="Aretes Perla">
-                  </div>
-                  <div class="product-details">
-                    <h2 class="product-title">Aretes Perla</h2>
-                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
-                    <p class="product-price">₡3.000</p>
-                    <button class="add-to-cart">Agregar a la bolsa</button>
-                  </div>
-                </div>
-    
-                <!-- Producto 8 -->
-                <div class="product-card Aretes">
-                  <div class="product-image">
-                    <img src="/Imagenes/Fotos/Aretes/JoyeriaAretesTrebolRojo.png" alt="Aretes trebol roja">
-                  </div>
-                  <div class="product-details">
-                    <h2 class="product-title">Aretes Trebol rojo</h2>
-                    <p class="product-description">Un diseño de buena suerte con acabado dorado delicado.</p>
-                    <p class="product-price">₡6.000</p>
-                    <button class="add-to-cart">Agregar a la bolsa</button>
-                  </div>
-                </div>
-    
-                <!-- Producto 9 -->
-                <div class="product-card Aretes">
-                  <div class="product-image">
-                    <img src="/Imagenes/Fotos/Collares/JoyeriaCollarFloresChispa.png" alt="Collar Flores Chispa">
-                  </div>
-                  <div class="product-details">
-                    <h2 class="product-title">Collar Flor chispa con baño de oro acero</h2>
-                    <p class="product-description">Un diseño único para que puedas realzar tu belleza con este collar.</p>
-                    <p class="product-price">₡7.000</p>
-                    <button class="add-to-cart">Agregar a la bolsa</button>
-                  </div>
-                </div>
-              </div>
-    
               <button class="carousel-arrow next" id="nextBtnAretes">&#10095;</button>
             </div>
           </div>
@@ -421,9 +386,82 @@
                     <button class="add-to-cart">Agregar a la bolsa</button>
                   </div>
                 </div>
-
-
       </section>
+
+        <!--Seccion Collares-->
+        <section id="AretesTienda" class="seccion-Aretes">
+          <div  class="container position-relative">
+            <h2 class="text-center mb-5">Collares ✨</h2>
+            <div class="carousel-containerAretes">
+              <button class="carousel-arrow prev" id="prevBtnAretes">&#10094;</button>
+              
+              <div class="carousel" id="productCarouselAretes">
+                <!-- Producto 1 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/CollarColmillo.jpg" alt="Aretes Corazón Dorado Plateado">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collar Colmillo </h2>
+                    <p class="product-description">Elegancia y estilo en una pieza encantadora. </p>
+                    <p class="product-price">₡3.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 2 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/PulseraFlores.jpg" alt="Aretes lazo chispita plateados">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collares </h2>
+                    <p class="product-description">Perfecta para toda ocasión.</p>
+                    <p class="product-price">₡4.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 3 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/PulseraCorazonTranspa.jpg" alt="Aretes trebol negra">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collares corazon transparente</h2>
+                    <p class="product-description">Un diseño de buena suerte con acabado trasnparente delicado.</p>
+                    <p class="product-price">₡6.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 4 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/PulseraColoridaCorazcon.jpg" alt="Aretes trebol roja">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collares Colorida</h2>
+                    <p class="product-description">Un diseño de Pulsera colorida.</p>
+                    <p class="product-price">₡6.700</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+    
+                <!-- Producto 5 -->
+                <div class="product-card Aretes">
+                  <div class="product-image">
+                    <img src="/Imagenes/Fotos/Collares/PulseraCruz.jpg" alt="Aretes Angel Blancos">
+                  </div>
+                  <div class="product-details">
+                    <h2 class="product-title">Collares con Cruz</h2>
+                    <p class="product-description">Un diseño unico de pulsera.</p>
+                    <p class="product-price">₡3.000</p>
+                    <button class="add-to-cart">Agregar a la bolsa</button>
+                  </div>
+                </div>
+      </section>
+
     </div>
     
 
@@ -481,23 +519,28 @@
   </footer>
 
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+ <!-- Caja contacto WH-->
+ <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+ <a href="https://wa.me/50671914947" target="_blank" id="whatsapp-button" class="whatsapp-button d-flex align-items-center justify-content-center">
+   <img src="/Imagenes/Iconos/IconoWHScroll.png" alt="WhatsApp" width="50" height="50"></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+ 
+  <!--Carrusel Inicio-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Vendor JS Files -->
- <!-- Bootstrap JS (con Popper incluido) -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
-  <script src="template/BizPage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="template/BizPage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="template/BizPage/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="template/BizPage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-  <!-- Main JS File -->
-  <script src="/js/main.js"></script>
-  <script src="/js/bolsacompras.js"></script>
+
+ <!-- Vendor JS Files -->
+<!-- Bootstrap JS (con Popper incluido) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
+ <script src="template/BizPage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+ <script src="template/BizPage/assets/vendor/glightbox/js/glightbox.min.js"></script>
+ <script src="template/BizPage/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+ <script src="template/BizPage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+ <!-- Main JS File -->
+ <script src="/js/main.js"></script>
+ <script src="/js/bolsacompras.js"></script>
 
 </body>
 
