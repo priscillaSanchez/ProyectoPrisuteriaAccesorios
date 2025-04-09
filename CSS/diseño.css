@@ -292,11 +292,99 @@ right: 5px;
   margin-bottom: 0;
 }
 
-<<<<<<< HEAD
-=======
-  .info-item p {
-    margin-bottom: 0;
-  }
+/*Formulario*/
 
-  
->>>>>>> 16a3d283d5a99c6fa8bbb29eb9906ffacb8d23ff
+
+.form-register {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+h4 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #555;
+}
+/*controls*/
+.controls {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+  /*Rango de Ingreso
+input[type="range"] {
+  width: 100%;
+}*/  
+
+#ingreso_mostrado {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/*Género*/   /*Otro grado acadeico*/
+.genero-container {
+  margin-bottom: 10px; /* Espacio debajo del contenedor */
+}
+
+.genero-container > label {
+  font-weight: bold; /* Hace que "Género:" se vea en negrita */
+  display: block; /* Mantiene el título separado */
+  margin-bottom: 5px; /* Espacio debajo del título */
+}
+
+.opciones {
+  display: flex; /* Alinea las opciones horizontalmente */
+  gap: 10px; /* Espacio entre cada opción */
+}
+
+.opciones label {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el texto con el radio */
+  gap: 5px; /* Espacio entre el botón de radio y el texto */
+  font-size: 14px; /* Tamaño de fuente para las etiquetas */
+}
+
+input[type="radio"] {
+  margin: 0; /* Elimina márgenes innecesarios en el radio */
+}
+
+/*Grado Académico*/
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+  /*boton Enviar*/
+.botons {
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+/*carousel produtcos*/

@@ -88,48 +88,50 @@
       </div>
       
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="300" onsubmit="enviarFormulario(event)">
-          <div class="row gy-4">
-            <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Tu Nombre" required>
-            </div>
-    
-            <div class="col-md-6">
-              <input type="email" class="form-control" name="email" placeholder="Tu Email" required>
-            </div>
-    
-            <div class="col-md-6">
-              <label>Fecha de Nacimiento:</label>
-              <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" required>
-            </div>
-    
-            <div class="col-md-6">
-              <label>Género:</label><br>
-              <input type="radio" name="genero" value="Masculino" required> Masculino
-              <input type="radio" name="genero" value="Femenino" required> Femenino
-              <input type="radio" name="genero" value="Otro" required> Otro
-            </div>
-    
-            <div class="col-md-12">
-              <label>Grado Académico:</label>
-              <select name="grado_academico[]" class="form-control" multiple required>
-                <option value="Primaria">Primaria</option>
-                <option value="Secundaria">Secundaria</option>
-                <option value="Técnico">Técnico</option>
-                <option value="Universitario">Universitario</option>
-                <option value="Posgrado">Posgrado</option>
-              </select>
-            </div>
+        <  <form class="form-register" action="https://formspree.io/f/mldglgew" method="POST">
+          <h4>FORMULARIO</h4>
+          <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre">
+          <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido">
+          <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+            <!--  <textarea class="controls" name="message" placeholder="Asunto"></textarea> -->
           
-            <input type="hidden" id="edad" name="edad">
-        
-            <div class="col-md-12 text-center">
-              <div class="loading">Cargando....</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Tu mensaje ha sido enviado con éxito, gracias!</div>
-              <button type="submit">Mandar Mensaje</button>
-            </div>
+          <!-- Fecha de Nacimiento -->
+          <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+          <input class="controls" type="date" name="fecha_nacimiento" id="fecha_nacimiento" onchange="calcularEdad()">
+          <!-- Campo oculto para enviar la edad -->
+         <!-- <p id="edad_mostrada">Edad: </p> -->
+          <input type="hidden" name="edad" id="edad">
+     
+      <div class="genero-container">
+          <label>Género:</label>
+          <div class="opciones">
+            <label>
+              <input type="radio" name="genero" value="Masculino">
+              Masculino
+            </label>
+            <label>
+              <input type="radio" name="genero" value="Femenino">
+              Femenino
+            </label>
           </div>
+        </div>
+        
+          <!-- Grado Académico -->
+          <label for="grado_academico">Grado Académico:</label>
+          <select class="controls" name="grado_academico[]" id="grado_academico" multiple>
+            <option value="primaria">Primaria</option>
+            <option value="secundaria">Secundaria</option>
+            <option value="bachillerato">Bachillerato</option>
+            <option value="licenciatura">Licenciatura</option>
+            <option value="maestria">Maestría</option>
+            <option value="doctorado">Doctorado</option>
+            <label>
+              <input type="radio" name="genero" value="Otro">
+              Otro
+            </label>
+           </select>
+      
+          <input class="botons" type="submit" value="ENVIAR">
         </form>
       </div>
     </section>
@@ -233,7 +235,6 @@
 
 <!-- es útil si tu sitio tiene muchos recursos (imágenes, scripts, etc.) y puede tardar en mostrar todo. Mejora la experiencia visual del usuario. -->
 <div id="preloader"></div>
-
  <!--Carrusel Inicio-->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -250,6 +251,7 @@
 <!-- Main JS File -->
 <script src="/ProyectoPrisuteriaAccesorios/js/main.js"></script>
 <script src="/ProyectoPrisuteriaAccesorios/js/bolsacompras.js"></script>
+<script src="/ProyectoPrisuteriaAccesorios/js/orden.js"></script>
 
 </body>
 
