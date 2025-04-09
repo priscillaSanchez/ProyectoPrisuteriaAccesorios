@@ -9,10 +9,6 @@ function eventListener(){
 
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> feab073973f25f115303d5a78d3ea906c87f15cd
 //Seccion Aretes
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('productCarouselAretes');
