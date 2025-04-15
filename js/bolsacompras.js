@@ -1,140 +1,149 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const carousel = document.getElementById('productCarouselAretes');
-    const prevBtn = document.getElementById('prevBtnAretes');
-    const nextBtn = document.getElementById('nextBtnAretes');
-    const cards = document.querySelectorAll('.Aretes');
+    document.addEventListener('DOMContentLoaded', () => {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   
-    let currentPosition = 0;
-    let cardWidth = 0;
-    let visibleCards = 0;
-    let maxPosition = 0;
+    function agregarProducto(e) {
+      const card = e.target.closest('.product-card');
+      const titulo = card.querySelector('.product-title').innerText;
+      const precioTexto = card.querySelector('.product-price').innerText;
+      const precio = parseInt(precioTexto.replace('₡', '').replace('.', '').replace(',', ''));
+      const imagen = card.querySelector('img').src;
   
-    //  Actualiza las dimensiones y la lógica del carrusel
-    function updateDimensions() {
-      const containerWidth = carousel.parentElement.clientWidth;
+      const producto = { titulo, precio, imagen, cantidad: 1 };
   
-      // Lógica responsiva
-      if (window.innerWidth > 992) {
-        visibleCards = 3; // Muestra 3 productos en pantallas grandes
-      } else if (window.innerWidth > 768) {
-        visibleCards = 2; // Muestra 2 productos en pantallas medianas
+      const index = carrito.findIndex(p => p.titulo === producto.titulo);
+      if (index >= 0) {
+        carrito[index].cantidad += 1;
       } else {
-        visibleCards = 1; // Muestra 1 producto en pantallas pequeñas
+        carrito.push(producto);
       }
   
-      // Calcula el ancho de cada tarjeta
-      cardWidth = containerWidth / visibleCards;
-  
-      cards.forEach(card => {
-        card.style.minWidth = `${cardWidth}px`;
-        card.style.maxWidth = `${cardWidth}px`;
-      });
-  
-      // Calcula el máximo desplazamiento del carrusel
-      maxPosition = Math.max(0, cards.length - visibleCards);
-  
-      // Asegura que la posición no se desborde
-      if (currentPosition > maxPosition) {
-        currentPosition = maxPosition;
-      }
-  
-      updateCarouselPosition();
-      updateButtonsVisibility();
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      mostrarMensaje();
+      actualizarContador();
+
+        // Mostrar mensaje con el nombre del producto
+  const mensaje = document.getElementById('mensajeExito');
+  mensaje.innerHTML = `“${titulo}” agregado a la bolsa `;
+  mensaje.style.display = 'block';
+
+  // Ocultar mensaje después de 2.5 segundos
+  setTimeout(() => {
+    mensaje.style.display = 'none';
+  }, 2500);
+}
+
+
+    function actualizarContador() {
+      const contador = document.getElementById('contadorCarrito');
+      const totalProductos = carrito.reduce((total, p) => total + p.cantidad, 0);
+      contador.innerText = totalProductos;
+      contador.style.display = totalProductos > 0 ? 'inline-block' : 'none';
     }
   
-    // Mueve el carrusel en la dirección deseada
-    function moveCarousel(direction) {
-      currentPosition += direction;
-  
-      // No dejar que el carrusel se desplace fuera de los límites
-      if (currentPosition < 0) currentPosition = 0;
-      if (currentPosition > maxPosition) currentPosition = maxPosition;
-  
-      updateCarouselPosition();
-      updateButtonsVisibility();
+    function mostrarMensaje() {
+      const mensaje = document.getElementById('mensajeExito');
+      if (!mensaje) return;
+      mensaje.style.display = 'block';
+      setTimeout(() => mensaje.style.display = 'none', 2000);
     }
   
-    // Actualiza la posición del carrusel
-    function updateCarouselPosition() {
-      carousel.style.transform = `translateX(-${currentPosition * cardWidth}px)`;
+    document.querySelectorAll('.add-to-cart').forEach(boton => {
+      boton.addEventListener('click', agregarProducto);
+    });
+  
+    actualizarContador();
+  });
+
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contenedor = document.getElementById('carritoContainer');
+  
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p>Tu bolsa está vacía </p>';
+      actualizarContadorCarrito();
+      return;
     }
   
-    // Actualiza la visibilidad de los botones de navegación
-    function updateButtonsVisibility() {
-      prevBtn.style.opacity = currentPosition === 0 ? '0.3' : '1';
-      prevBtn.style.pointerEvents = currentPosition === 0 ? 'none' : 'auto';
-  
-      nextBtn.style.opacity = currentPosition === maxPosition ? '0.3' : '1';
-      nextBtn.style.pointerEvents = currentPosition === maxPosition ? 'none' : 'auto';
-    }
-  
-    // Eventos de los botones de navegación
-    prevBtn.addEventListener('click', () => moveCarousel(-1));
-    nextBtn.addEventListener('click', () => moveCarousel(1));
-  
-    // Inicializa el carrusel y redimensiona cuando la ventana cambie
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
+    mostrarCarrito(carrito);
+    actualizarContadorCarrito();
   });
   
-  //pulseras
-
-document.addEventListener('DOMContentLoaded', function () {
-  const carousel = document.getElementById('productCarouselPulseras');
-  const prevBtn = document.getElementById('prevBtnPulseras');
-  const nextBtn = document.getElementById('nextBtnPulseras');
-  const cards = carousel.querySelectorAll('.product-card');
-
-  let currentPosition = 0;
-  let cardWidth = 0;
-  let visibleCards = 1;
-  let maxPosition = 0;
-
-  function updateDimensions() {
-    const containerWidth = carousel.parentElement.clientWidth;
-
-    if (window.innerWidth > 992) {
-      visibleCards = 4;
-    } else if (window.innerWidth > 768) {
-      visibleCards = 3;
-    } else if (window.innerWidth > 576) {
-      visibleCards = 2;
-    } else {
-      visibleCards = 1;
-    }
-
-    cardWidth = containerWidth / visibleCards;
-
-    cards.forEach(card => {
-      card.style.minWidth = `${cardWidth}px`;
-    });
-
-    maxPosition = Math.max(0, cards.length - visibleCards);
-
-    if (currentPosition > maxPosition) {
-      currentPosition = maxPosition;
-    }
-
-    updateCarouselPosition();
-    updateButtonsVisibility();
-  }
-
-  function moveCarousel(direction) {
-    currentPosition += direction;
-    if (currentPosition < 0) currentPosition = 0;
-    if (currentPosition > maxPosition) currentPosition = maxPosition;
-    updateCarouselPosition();
-    updateButtonsVisibility();
-  }
-
-  function updateCarouselPosition() {
-    carousel.style.transform = `translateX(-${currentPosition * cardWidth}px)`;
-  }
-
+  function mostrarCarrito(carrito) {
+    const contenedor = document.getElementById('carritoContainer');
+    let total = 0;
   
-  prevBtn.addEventListener('click', () => moveCarousel(-1));
-  nextBtn.addEventListener('click', () => moveCarousel(1));
+    contenedor.innerHTML = carrito.map((p, index) => {
+      total += p.precio * p.cantidad;
+      return `
+        <div class="productoEnCarrito">
+          <div class="productoInfo">
+            <img src="${p.imagen}" alt="${p.titulo}" width="80">
+            <div>
+              <h4>${p.titulo}</h4>
+              <p>Precio: ₡${p.precio.toLocaleString()} por unidad</p>
+              <label for="cantidad-${index}">Cantidad:</label>
+              <input type="number" id="cantidad-${index}" value="${p.cantidad}" min="1" onchange="actualizarCantidad(${index}, ${p.precio})">
+              <p>Total por producto: ₡${(p.precio * p.cantidad).toLocaleString()}</p>
+            </div>
+          </div>
+          <button class="eliminarBtn" onclick="eliminarProducto(${index})" title="Eliminar producto">
+           ✕ 
+          </button>
+        </div>
+        <hr>
+      `;
+    }).join('') + `
+      <h3>Total: ₡${total.toLocaleString()} CRC</h3>
+      <button onclick="finalizarCompra()">Finalizar compra</button>
+    `;
+  }
+  
+  function eliminarProducto(index) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1); // Elimina el producto en esa posición
+  
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito(carrito);
+    actualizarContadorCarrito();
+  }
 
-  updateDimensions();
-  window.addEventListener('resize', updateDimensions);
-});
+  function actualizarCantidad(index, precio) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const nuevaCantidad = document.getElementById(`cantidad-${index}`).value;
+  
+    // Verificamos que la cantidad sea mayor a 0
+    if (nuevaCantidad > 0) {
+      carrito[index].cantidad = parseInt(nuevaCantidad);
+  
+      // Actualizamos el carrito en el localStorage
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+  
+      // Volvemos a mostrar el carrito actualizado
+      mostrarCarrito(carrito);
+  
+      // Actualizamos el contador en el ícono del carrito
+      actualizarContadorCarrito();
+    }
+  }
+  
+  function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contadorCarrito = document.getElementById('contadorCarrito');
+  
+    // Contamos la cantidad total de productos en el carrito
+    const totalProductos = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+  
+    // Actualizamos el contador en el ícono del carrito
+    if (contadorCarrito) {
+      contadorCarrito.textContent = totalProductos;
+    }
+  }
+  
+  function finalizarCompra() {
+    alert("¡Gracias por tu compra! 🛍️");
+    localStorage.removeItem('carrito');
+    location.reload();
+  }

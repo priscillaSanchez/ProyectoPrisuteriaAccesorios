@@ -58,9 +58,20 @@
           </li>
           
           <li>
-          <a href="" class="bolsaCompras">
-            <img src="/Imagenes/Iconos/BolsaCompras.png" alt="Bolsa de Compras" >
-          </a>
+            <a href="compra.html" class="bolsaCompras" style="position: relative;">
+              <img src="/Imagenes/Iconos/BolsaCompras.png" alt="Bolsa de Compras" />
+              <span id="contadorCarrito" style="
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background:  #f36198;
+                color: white;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 12px;
+                display: none;
+              ">0</span>
+            </a>
           </li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -423,6 +434,7 @@
 
   <!-- Main JS File -->
   <script src="/js/main.js"></script>
+  <script src="/js/bolsacompras.js"></script>
 
 </body>
 
