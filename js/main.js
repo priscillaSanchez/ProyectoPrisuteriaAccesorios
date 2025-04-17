@@ -279,18 +279,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
       console.log("Índice actualizado:", currentIndex, "Transform:", `translateX(-${currentIndex * itemWidth}px)`);
   }
+})
 
   // Asignar eventos a los botones
-  const leftArrow = document.querySelector(".arrow-left");
-  const rightArrow = document.querySelector(".arrow-right");
+//  const leftArrow = document.querySelector(".arrow-left");
+ // const rightArrow = document.querySelector(".arrow-right");
 
-  if (leftArrow && rightArrow) {
-      leftArrow.addEventListener("click", () => moveSlide(-1));
-      rightArrow.addEventListener("click", () => moveSlide(1));
-  } else {
-      console.error("No se encontraron los botones");
-  }
-});
-
-//Tienda
-
+//  if (leftArrow && rightArrow) {
+//      leftArrow.addEventListener("click", () => moveSlide(-1));
+  //    rightArrow.addEventListener("click", () => moveSlide(1));
+//  } else {
+    //  console.error("No se encontraron los botones");
+//  }
+//})

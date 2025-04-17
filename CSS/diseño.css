@@ -537,3 +537,18 @@ h3 {
 .eliminarBtn:hover {
   transform: scale(1.2);
 }
+
+
+/*form*/
+
+.form-group-inline {
+  display: flex;
+  flex-wrap: wrap; /* para que se acomode en pantallas pequeñas */
+  gap: 10px; /* espacio entre selects */
+  align-items: center;
+}
+
+.form-group-inline .form-mid-w3ls {
+  flex: 1; /* hace que todos crezcan igual */
+  min-width: 150px; /* opcional: asegura que no se aplasten demasiado */
+}
