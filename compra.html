@@ -106,35 +106,42 @@
     
 
 
-    <div id="formularioCompra" style="display: none;" class="container" data-aos="fade-up" data-aos-delay="100">
+    <div id="formularioCompra" class="centro-absolute" style="display: none;" data-aos="fade-up" data-aos-delay="100">
       <form class="form-register" action="https://formspree.io/f/mldglgew" method="POST">
         <h4>Finalizar Compra</h4>
+    
         <input class="controls" type="text" id="identificacion" placeholder="Cédula / Identificación">
         <button type="button" onclick="buscarContribuyente()">Buscar</button>
-        <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre del Contribuyente">
+    
+        <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre del Contribuyente" style="display: none;">
         <input class="controls" type="email" name="correo" placeholder="Ingrese su Correo">       
-   
-        <div class="form-group-inline">
+    
+        <div class="form-group">
           <div class="form-mid-w3ls">
             <select id="prov" class="form-control country-buttom" onchange="cambioSelect('P')">
               <option value="">Select Provincia</option>
             </select>
           </div>
+    
           <div class="form-mid-w3ls">
             <select id="can" class="form-control country-buttom" onchange="cambioSelect('C')">
               <option value="">Select Cantón</option>
             </select>
           </div>
+    
           <div class="form-mid-w3ls">
             <select id="dis" class="form-control country-buttom">
               <option value="">Select Distrito</option>
             </select>
           </div>
+    
+          <div class="clear"></div>
         </div>
-        <input class="botons" type="submit" value="ENVIAR">
+    
+        <input class="botons" type="submit" value="ENVIAR" style="background-color: #f36198;  color: white">
       </form>
     </div>
-
+    
 
   </main>
 
@@ -210,6 +217,8 @@
   <script src="/js/main.js"></script>
  <script src="/js/bolsacompras.js"></script>
  <script src="/js/orden.js"></script>
+ <script src="/js/facturar.js"></script>
+
 </body>
 
 </html>

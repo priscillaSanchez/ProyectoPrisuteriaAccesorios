@@ -541,14 +541,19 @@ h3 {
 
 /*form*/
 
-.form-group-inline {
+#formularioCompra {
+  min-height: 100vh; /* Altura completa de la pantalla */
   display: flex;
-  flex-wrap: wrap; /* para que se acomode en pantallas pequeñas */
-  gap: 10px; /* espacio entre selects */
+  justify-content: center;
   align-items: center;
 }
 
-.form-group-inline .form-mid-w3ls {
-  flex: 1; /* hace que todos crezcan igual */
-  min-width: 150px; /* opcional: asegura que no se aplasten demasiado */
+.form-register {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
