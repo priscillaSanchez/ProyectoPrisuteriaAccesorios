@@ -109,40 +109,86 @@
     <div id="formularioCompra" class="centro-absolute" style="display: none;" data-aos="fade-up" data-aos-delay="100">
       <form class="form-register" action="https://formspree.io/f/mldglgew" method="POST">
         <h4>Finalizar Compra</h4>
-    
+        <h5 class="mb-3 mt-4">Datos Personales</h5>
+
         <input class="controls" type="text" id="identificacion" placeholder="Cédula / Identificación">
         <button type="button" onclick="buscarContribuyente()">Buscar</button>
     
         <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre del Contribuyente" style="display: none;">
         <input class="controls" type="email" name="correo" placeholder="Ingrese su Correo">       
     
+        <!--Direccion-->
+        <h5 class="mb-3 mt-4">Información de Envio</h5>
+
         <div class="form-group">
           <div class="form-mid-w3ls">
             <select id="prov" class="form-control country-buttom" onchange="cambioSelect('P')">
-              <option value="">Select Provincia</option>
+              <option value="">Selecionar Provincia</option>
             </select>
           </div>
     
           <div class="form-mid-w3ls">
             <select id="can" class="form-control country-buttom" onchange="cambioSelect('C')">
-              <option value="">Select Cantón</option>
+              <option value="">Selecionar Cantón</option>
             </select>
           </div>
     
           <div class="form-mid-w3ls">
             <select id="dis" class="form-control country-buttom">
-              <option value="">Select Distrito</option>
+              <option value="">Selecionar Distrito</option>
             </select>
           </div>
     
-          <div class="clear"></div>
+
+      <!-- Pago -->
+      <h5 class="mb-3 mt-4">Información de Pago</h5>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="metodo-pago" id="tarjeta-credito" value="Tarjeta de Crédito" checked />
+        <label class="form-check-label" for="tarjeta-credito">Tarjeta de Crédito</label>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" name="metodo-pago" id="SINPE" value="SINPE" />
+        <label class="form-check-label" for="SINPE">Sinpe Movil</label>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="tarjeta">Nombre en la tarjeta</label>
+          <input class="form-control" type="text" name="nombre_tarjeta" id="tarjeta" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="numero-tarjeta">Número de tarjeta</label>
+          <input class="form-control" type="text" name="numero_tarjeta" id="numero-tarjeta" maxlength="19" oninput="formatearTarjeta(this)" />
+          <span id="tarjeta-error" style="color: red; display: none;">X</span>
+          <span id="tarjeta-validacion" style="color: green; display: none;">✔</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="tarjeta-expiracion">Expiración</label>
+          <input class="form-control" type="text" name="expiracion" id="tarjeta-expiracion" maxlength="5" placeholder="MM/AA" oninput="formatearFecha(this)" />
+          <span id="expiracion-error" style="color: red; display: none;">X | Tarjeta vencida</span>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="tarjeta-cvv">CVV</label>
+          <input class="form-control" type="text" name="cvv" id="tarjeta-cvv" 
+                 maxlength="4" pattern="\d{4}" inputmode="numeric" required
+                 placeholder="4 dígitos" title="Ingresa exactamente 4 números" />
+        </div>
+      </div>
+         <div class="clear"></div>
         </div>
     
         <input class="botons" type="submit" value="ENVIAR" style="background-color: #f36198;  color: white">
       </form>
     </div>
     
+<!---->
 
+
+
+      
   </main>
 
   <footer id="footer" style="background-color: #c8a2c8; color: white;" class="pt-5 pb-4">
