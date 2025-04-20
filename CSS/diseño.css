@@ -574,3 +574,44 @@ h3 {
     margin-top: 10px;
   }
 }
+.navbar-toggler {
+  display: block !important;
+}
+
+@media screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+
+  .navbar-collapse.show {
+    display: block !important;
+  }
+}
+
