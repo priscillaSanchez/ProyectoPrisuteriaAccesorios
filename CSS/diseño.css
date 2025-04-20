@@ -326,26 +326,6 @@ label {
   border-radius: 5px;
   font-size: 1rem;
 }
-  /*Rango de Ingreso
-input[type="range"] {
-  width: 100%;
-}*/  
-
-#ingreso_mostrado {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/*Género*/   /*Otro grado acadeico*/
-.genero-container {
-  margin-bottom: 10px; /* Espacio debajo del contenedor */
-}
-
-.genero-container > label {
-  font-weight: bold; /* Hace que "Género:" se vea en negrita */
-  display: block; /* Mantiene el título separado */
-  margin-bottom: 5px; /* Espacio debajo del título */
-}
 
 .opciones {
   display: flex; /* Alinea las opciones horizontalmente */
@@ -361,29 +341,6 @@ input[type="range"] {
 
 input[type="radio"] {
   margin: 0; /* Elimina márgenes innecesarios en el radio */
-}
-
-/*Grado Académico*/
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
-  /*boton Enviar*/
-.botons {
-  width: 100%;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 
@@ -557,10 +514,10 @@ h3 {
   padding: 40px 20px;
   max-width: 1200px;         /* Limita el ancho máximo */
   margin: 0 auto;            /* Centra el contenedor horizontalmente */
+  background-color: white;  /* Fondo blanco */
 }
 
 .seccion-accesorios a {
-  text-decoration: none;
   width: calc(30% - 20px); /* 4 columnas en pantallas grandes */
   min-width: 200px;
   transition: transform 0.3s;
@@ -588,10 +545,32 @@ h3 {
   font-size: 1rem;
 }
 
-/* Responsive: en pantallas pequeñas, mostrar en fila */
 @media screen and (max-width: 768px) {
-  .seccion-accesorios a {
+  .seccion-accesorios .row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px;
+  }
+
+  .seccion-accesorios .row a {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .seccion-accesorios .row a .accesorio {
     width: 100%;
-    max-width: 400px;          /* Mantén un ancho controlado en móvil */
+  }
+
+  .seccion-accesorios .row a img {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+  .seccion-accesorios .row a h3 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10px;
   }
 }
