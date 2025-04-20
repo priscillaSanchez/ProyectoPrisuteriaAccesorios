@@ -188,29 +188,31 @@ function cambioSelect(p) {
 
 
 
+  document.addEventListener('DOMContentLoaded', function () {
+    const radioTarjeta = document.getElementById('tarjeta-credito');
+    const radioSinpe = document.getElementById('SINPE');
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const sinpeRadio = document.getElementById("SINPE");
-    const tarjetaRadio = document.getElementById("tarjeta-credito");
-    const formularioTarjeta = document.getElementById("formulario-tarjeta");
-    const mensajeSinpe = document.getElementById("mensaje-sinpe");
+    const formularioTarjeta = document.getElementById('formulario-tarjeta');
+    const mensajeSinpe = document.getElementById('mensaje-sinpe');
 
-    function actualizarVista() {
-      if (sinpeRadio.checked) {
-        formularioTarjeta.style.display = "none";
-        mensajeSinpe.style.display = "block";
-      } else if (tarjetaRadio.checked) {
-        formularioTarjeta.style.display = "block";
-        mensajeSinpe.style.display = "none";
+    function actualizarMetodoPago() {
+      if (radioTarjeta.checked) {
+        formularioTarjeta.style.display = 'block';
+        mensajeSinpe.style.display = 'none';
+      } else if (radioSinpe.checked) {
+        formularioTarjeta.style.display = 'none';
+        mensajeSinpe.style.display = 'block';
       }
     }
 
-    sinpeRadio.addEventListener("change", actualizarVista);
-    tarjetaRadio.addEventListener("change", actualizarVista);
+    // Escuchar los cambios
+    radioTarjeta.addEventListener('change', actualizarMetodoPago);
+    radioSinpe.addEventListener('change', actualizarMetodoPago);
 
-    // Ejecuta al iniciar para reflejar el valor seleccionado
-    actualizarVista();
+    // Ejecutar al inicio
+    actualizarMetodoPago();
   });
+  
 
 //detectar tarjeta
   function detectarTipoTarjeta(input) {

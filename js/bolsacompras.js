@@ -105,30 +105,58 @@
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito.splice(index, 1); // Elimina el producto en esa posición
   
+    const contenedor = document.getElementById('carritoContainer'); // Definimos el contenedor
+  
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito(carrito);
-    actualizarContadorCarrito();
-  }
-
-  function actualizarCantidad(index, precio) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const nuevaCantidad = document.getElementById(`cantidad-${index}`).value;
   
-    // Verificamos que la cantidad sea mayor a 0
-    if (nuevaCantidad > 0) {
-      carrito[index].cantidad = parseInt(nuevaCantidad);
-  
-      // Actualizamos el carrito en el localStorage
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-  
-      // Volvemos a mostrar el carrito actualizado
+    // Verificamos si el carrito quedó vacío después de eliminar
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p>Tu bolsa está vacía </p>';
+    } else {
       mostrarCarrito(carrito);
+    }
   
-      // Actualizamos el contador en el ícono del carrito
-      actualizarContadorCarrito();
+    // Actualizamos el contador del carrito
+    actualizarContadorCarrito();
+  
+    // Cerramos el formulario si está abierto
+    const formularioCompra = document.getElementById('formularioCompra');
+    if (formularioCompra.style.display === 'block') {
+      formularioCompra.style.display = 'none'; // Cierra el formulario
     }
   }
   
+
+  function actualizarCantidad(index, precio) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const nuevaCantidad = parseInt(document.getElementById(`cantidad-${index}`).value);
+    const contenedor = document.getElementById('carritoContainer'); // Aseguramos acceso al contenedor
+  
+    if (nuevaCantidad > 0) {
+      carrito[index].cantidad = nuevaCantidad;
+    } else {
+      // Si la cantidad es 0 o menor, se elimina el producto
+      carrito.splice(index, 1);
+    }
+  
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  
+    // Verificamos si el carrito quedó vacío después de eliminar
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p>Tu bolsa está vacía </p>';
+    } else {
+      mostrarCarrito(carrito);
+    }
+  
+    actualizarContadorCarrito();
+
+      // Cerramos el formulario si está abierto
+      const formularioCompra = document.getElementById('formularioCompra');
+      if (formularioCompra.style.display === 'block') {
+        formularioCompra.style.display = 'none'; // Cierra el formulario
+      }
+  }
+
   function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const contadorCarrito = document.getElementById('contadorCarrito');
