@@ -107,7 +107,7 @@
 
 
     <div id="formularioCompra" class="centro-absolute" style="display: none;" data-aos="fade-up" data-aos-delay="100">
-      <form class="form-register" action="https://formspree.io/f/mldglgew" method="POST">
+      <form class="form-register" action="https://formspree.io/f/xqaprdwe" method="POST">
         <h4>Finalizar Compra</h4>
         <h5 class="mb-3 mt-4">Datos Personales</h5>
 
@@ -142,48 +142,74 @@
 
       <!-- Pago -->
       <h5 class="mb-3 mt-4">Información de Pago</h5>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" name="metodo-pago" id="tarjeta-credito" value="Tarjeta de Crédito" checked />
-        <label class="form-check-label" for="tarjeta-credito">Tarjeta de Crédito</label>
-      </div>
-      <div class="form-check mb-3">
-        <input class="form-check-input" type="radio" name="metodo-pago" id="SINPE" value="SINPE" />
-        <label class="form-check-label" for="SINPE">Sinpe Movil</label>
-      </div>
+    <!-- Método de pago: Tarjeta de crédito -->
+<div class="form-check mb-2">
+  <input class="form-check-input" type="radio" name="metodo-pago" id="tarjeta-credito" value="Tarjeta de Crédito" checked />
+  <label class="form-check-label" for="tarjeta-credito">Tarjeta de Crédito</label>
+</div>
 
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="tarjeta">Nombre en la tarjeta</label>
-          <input class="form-control" type="text" name="nombre_tarjeta" id="tarjeta" />
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="numero-tarjeta">Número de tarjeta</label>
-          <input class="form-control" type="text" name="numero_tarjeta" id="numero-tarjeta" maxlength="19" oninput="formatearTarjeta(this)" />
-          <span id="tarjeta-error" style="color: red; display: none;">X</span>
-          <span id="tarjeta-validacion" style="color: green; display: none;">✔</span>
-        </div>
-      </div>
+<!-- Método de pago: Sinpe Móvil -->
+<div class="form-check mb-3">
+  <input class="form-check-input" type="radio" name="metodo-pago" id="SINPE" value="SINPE" />
+  <label class="form-check-label" for="SINPE">Sinpe Móvil</label>
+</div>
 
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="tarjeta-expiracion">Expiración</label>
-          <input class="form-control" type="text" name="expiracion" id="tarjeta-expiracion" maxlength="5" placeholder="MM/AA" oninput="formatearFecha(this)" />
-          <span id="expiracion-error" style="color: red; display: none;">X | Tarjeta vencida</span>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="tarjeta-cvv">CVV</label>
-          <input class="form-control" type="text" name="cvv" id="tarjeta-cvv" 
-                 maxlength="4" pattern="\d{4}" inputmode="numeric" required
-                 placeholder="4 dígitos" title="Ingresa exactamente 4 números" />
+<!-- Formulario de tarjeta -->
+<div id="formulario-tarjeta">
+  <div class="row">
+    <div class="col-md-8 mb-3">
+      <label for="tarjeta">Nombre en la tarjeta</label>
+      <input class="form-control" type="text" name="nombre_tarjeta" id="tarjeta" />
+    </div>
+    <div class="col-md-8 mb-3"> <!-- antes era col-md-6 -->
+      <label for="numero-tarjeta">Número de tarjeta</label>
+      <div style="position: relative;">
+        <input class="form-control"
+               type="text"
+               name="numero_tarjeta"
+               id="numero-tarjeta"
+               maxlength="19"
+               oninput="detectarTipoTarjeta(this)"
+               style="padding-right: 60px;" />
+    
+        <div id="tarjeta-feedback"
+             style="position: absolute; top: 50%; right: 5px; transform: translateY(-50%); height: 30px; width: 45px;">
+          <img id="logo-tarjeta" src="" alt="Tipo de tarjeta"
+               style="max-height: 100%; max-width: 100%; display: none;" />
+          <span id="tarjeta-error" style="color: red; font-size: 20px; display: none;">✖</span>
         </div>
       </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="tarjeta-expiracion">Expiración</label>
+      <input class="form-control" type="text" name="expiracion" id="tarjeta-expiracion" maxlength="5" placeholder="MM/AA" oninput="formatearFecha(this)" />
+      <span id="expiracion-error" style="color: red; display: none;">X | Tarjeta vencida</span>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="tarjeta-cvv">CVV</label>
+      <input class="form-control" type="text" name="cvv" id="tarjeta-cvv" maxlength="3" pattern="\d{3}" inputmode="numeric" required placeholder="3 dígitos" title="Ingresa exactamente 3 números" />
+    </div>
+  </div>
+</div>
+
+<!-- Mensaje de SINPE -->
+<div id="mensaje-sinpe" style="display: none; margin-top: 20px;">
+  <p>
+    Los números para hacer el pago son <strong>+506 7191 4947</strong> y para enviar el comprobante a Whatsapp es el <strong>+506 7191 4947</strong>,
+    por favor asegúrate de hacernos llegar la transferencia en el transcurso de las próximas 4 horas únicamente al número indicado.
+    Tu pedido será procesado en 24 horas a partir del momento en que recibamos la confirmación.
+  </p>
+</div>
+</div>
          <div class="clear"></div>
-        </div>
+      
     
         <input class="botons" type="submit" value="ENVIAR" style="background-color: #f36198;  color: white">
       </form>
-    </div>
-    
+   
+  </div>
 <!---->
 
 

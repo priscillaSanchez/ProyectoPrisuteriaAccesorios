@@ -187,52 +187,63 @@ function cambioSelect(p) {
   }
 
 
-     // Función para formatear el número de la tarjeta con espacios cada 4 dígitos
-  function formatearTarjeta(input) {
-    let value = input.value.replace(/\D/g, ''); // Eliminar todo lo que no sea número
-    value = value.substring(0, 16); // Limitar a 16 dígitos, longitud típica de una tarjeta
 
-    // Formatear con espacios cada 4 dígitos
-    let formattedValue = '';
-    for (let i = 0; i < value.length; i++) {
-      if (i > 0 && i % 4 === 0) {
-        formattedValue += ' ';
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const sinpeRadio = document.getElementById("SINPE");
+    const tarjetaRadio = document.getElementById("tarjeta-credito");
+    const formularioTarjeta = document.getElementById("formulario-tarjeta");
+    const mensajeSinpe = document.getElementById("mensaje-sinpe");
+
+    function actualizarVista() {
+      if (sinpeRadio.checked) {
+        formularioTarjeta.style.display = "none";
+        mensajeSinpe.style.display = "block";
+      } else if (tarjetaRadio.checked) {
+        formularioTarjeta.style.display = "block";
+        mensajeSinpe.style.display = "none";
       }
-      formattedValue += value[i];
     }
 
-    input.value = formattedValue;
+    sinpeRadio.addEventListener("change", actualizarVista);
+    tarjetaRadio.addEventListener("change", actualizarVista);
 
-    // Validar si es una tarjeta de Visa o MasterCard
-    validarTarjeta(formattedValue);
-  }
+    // Ejecuta al iniciar para reflejar el valor seleccionado
+    actualizarVista();
+  });
 
-  // Función para validar si es Visa o MasterCard
-  function validarTarjeta(value) {
-    const errorElement = document.getElementById('tarjeta-error');
-    const validacionElement = document.getElementById('tarjeta-validacion');
-
-    // Eliminar espacios para validar correctamente
-    const cleanValue = value.replace(/\s/g, ''); // Eliminar los espacios antes de la validación
-
-    // Expresiones regulares para validar el tipo de tarjeta
-    // Visa: comienza con 4 y tiene entre 13 y 16 dígitos
-    const visaRegex = /^4[0-9]{12,15}$/;
-
-    // MasterCard: comienza con 51-55 o entre 2221-2720 y tiene 16 dígitos
-    const mastercardRegex = /^(5[1-5][0-9]{14}|2[2-7][0-9]{14})$/;
-
-    // Si la tarjeta es de Visa o MasterCard
-    if (visaRegex.test(cleanValue)) {
-      errorElement.style.display = 'none';
-      validacionElement.style.display = 'inline';
-      validacionElement.innerText = '✔ Visa';
-    } else if (mastercardRegex.test(cleanValue)) {
-      errorElement.style.display = 'none';
-      validacionElement.style.display = 'inline';
-      validacionElement.innerText = '✔ MasterCard';
+//detectar tarjeta
+  function detectarTipoTarjeta(input) {
+    const valor = input.value.replace(/\s+/g, '');
+    const logo = document.getElementById("logo-tarjeta");
+    const error = document.getElementById("tarjeta-error");
+  
+    // Formatear con espacios cada 4 dígitos
+    input.value = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
+  
+    // Detectar tipo de tarjeta
+    let tipo = "";
+    if (/^4/.test(valor)) {
+      tipo = "visa";
+    } else if (/^5[1-5]/.test(valor) || /^2(2[2-9]|[3-6][0-9]|7[01]|720)/.test(valor)) {
+      tipo = "mastercard";
     } else {
-      errorElement.style.display = 'inline'; // Mostrar X si no es una tarjeta válida
-      validacionElement.style.display = 'none';
+      tipo = "";
+    }
+  
+    // Mostrar imagen o X según el caso
+    if (tipo === "visa") {
+      logo.src = "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg";
+      logo.style.display = "inline";
+      error.style.display = "none";
+    } else if (tipo === "mastercard") {
+      logo.src = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
+      logo.style.display = "inline";
+      error.style.display = "none";
+    } else {
+      logo.style.display = "none";
+      // Solo mostrar la X si hay más de 6 dígitos (como para que ya tenga sentido evaluar)
+      error.style.display = valor.length >= 6 ? "inline" : "none";
     }
   }
+  
