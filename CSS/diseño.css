@@ -547,3 +547,51 @@ h3 {
   padding: 20px;
   background-color: white;  /* Fondo blanco */
 }
+
+/*Productos Index.html*/
+.seccion-accesorios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1200px;         /* Limita el ancho máximo */
+  margin: 0 auto;            /* Centra el contenedor horizontalmente */
+}
+
+.seccion-accesorios a {
+  text-decoration: none;
+  width: calc(30% - 20px); /* 4 columnas en pantallas grandes */
+  min-width: 200px;
+  transition: transform 0.3s;
+}
+
+
+.seccion-accesorios a:hover {
+  transform: scale(1.05);
+}
+
+.accesorio {
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+.accesorio img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.accesorio h3 {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* Responsive: en pantallas pequeñas, mostrar en fila */
+@media screen and (max-width: 768px) {
+  .seccion-accesorios a {
+    width: 100%;
+    max-width: 400px;          /* Mantén un ancho controlado en móvil */
+  }
+}

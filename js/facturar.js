@@ -212,7 +212,7 @@ function cambioSelect(p) {
     // Ejecutar al inicio
     actualizarMetodoPago();
   });
-  
+
 
 //detectar tarjeta
   function detectarTipoTarjeta(input) {
@@ -239,7 +239,7 @@ function cambioSelect(p) {
       logo.style.display = "inline";
       error.style.display = "none";
     } else if (tipo === "mastercard") {
-      logo.src = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
+      logo.src = "";
       logo.style.display = "inline";
       error.style.display = "none";
     } else {
