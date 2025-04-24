@@ -17,25 +17,28 @@ var cmbDistrito = document.getElementById('dis');
 // ----------------------- provincias -----------------------
 // consola // js
 function cargarProvincias() {
+    //  Llama a la API con fetch
     fetch('https://ubicaciones.paginasweb.cr/provincias.json')
-        .then((res) => res.json())
+        .then((res) => res.json()) //solicitud HTTP para obtener los datos.
+     //Convierte la respuesta en formato JSON (JavaScript Object Notation).   
         .then((data) => {
             var obj = data;
             var keys = Object.keys(obj);
 
-            cmbProvincia.innerHTML = '';
+            cmbProvincia.innerHTML = ''; // limpia el select (esto puede causar error si cmbProvincia no existe)
 
             for (var i = 0; i < keys.length; i++) {
                 var option = $(
-                    '<option value="' + keys[i] + '">' + obj[keys[i]] + '</option>'
+                    '<option value="' + keys[i] + '">' + obj[keys[i]] + '</option>' //Object.keys(obj) convierte este objeto:  "1": "San José",
+
                 );
                 $('#prov').append(option);
             }
 
-            cambioSelect('P');
+            cambioSelect('P');  // llama otra función q carga los cantones
         })
         .catch((err) => {
-            console.log(err);
+            console.log(err);// muestra errores si hay problemas con la conexión o la API
         });
 }
 cargarProvincias();
@@ -47,20 +50,22 @@ cargarProvincias();
 // ----------------------- Cantones -----------------------
 // consola // js
 function cargarCantones() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var cantones = JSON.parse(this.responseText);
-            console.log(cantones);
-        }
-    };
-    xhttp.open(
-        'GET',
-        'https://ubicaciones.paginasweb.cr/provincia/1/cantones.json',
-        true
-    );
-    xhttp.send();
+  fetch('https://ubicaciones.paginasweb.cr/provincia/1/cantones.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al cargar los cantones');
+      }
+      return response.json();
+    })
+    .then(cantones => {
+      console.log(cantones);
+      // Aquí podés trabajar con los datos recibidos, como llenar un <select> por ejemplo
+    })
+    .catch(error => {
+      console.error('Hubo un problema con la petición fetch:', error);
+    });
 }
+
 cargarCantones();
 
 
@@ -70,20 +75,22 @@ cargarCantones();
 // ----------------------- Distritos -----------------------
 // consola // js
 function cargarDistritos() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var distritos = JSON.parse(this.responseText);
-            console.log(distritos);
-        }
-    };
-    xhttp.open(
-        'GET',
-        'https://ubicaciones.paginasweb.cr/provincia/1/canton/1/distritos.json',
-        true
-    );
-    xhttp.send();
+  fetch('https://ubicaciones.paginasweb.cr/provincia/1/canton/1/distritos.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al cargar los distritos');
+      }
+      return response.json();
+    })
+    .then(distritos => {
+      console.log(distritos);
+      // Aquí podés trabajar con los datos, como llenar un <select>
+    })
+    .catch(error => {
+      console.error('Hubo un problema con la petición fetch:', error);
+    });
 }
+
 cargarDistritos();
 
 // CARGAR DEPENDIENDO DE LA PROVINCIA
@@ -249,3 +256,26 @@ function cambioSelect(p) {
     }
   }
   
+
+
+
+const btn = document.getElementById('botons');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_icc09wk';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Enviar Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Enviar Email';
+      alert(JSON.stringify(err));
+    });
+});

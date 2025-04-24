@@ -31,6 +31,8 @@
   <link href="CSS/main.css" rel="stylesheet">
   <link href="CSS/diseño.css" rel="stylesheet">
 
+
+
 </head>
 
 <body class="index-page">
@@ -107,7 +109,7 @@
 
 
     <div id="formularioCompra" class="centro-absolute" style="display: none;" data-aos="fade-up" data-aos-delay="100">
-      <form class="form-register" action="https://formspree.io/f/xqaprdwe" method="POST">
+      <form class="form-register">
         <h4>Finalizar Compra</h4>
         <h5 class="mb-3 mt-4">Datos Personales</h5>
 
@@ -115,7 +117,7 @@
         <button type="button" onclick="buscarContribuyente()">Buscar</button>
     
         <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre del Contribuyente" style="display: none;">
-        <input class="controls" type="email" name="correo" placeholder="Ingrese su Correo">       
+        <input class="controls" type="email" name="email" placeholder="Ingrese su Correo">       
     
         <!--Direccion-->
         <h5 class="mb-3 mt-4">Información de Envio</h5>
@@ -209,9 +211,11 @@
   <div class="clear"></div>
 
   <!-- Botón ENVIAR visible siempre -->
-  <input class="botons" type="submit" value="ENVIAR" style="background-color: #f36198; color: white; margin-top: 20px;">
+  <input type="submit" id="button" value="Enviar Email"  style="background-color: #f36198; color: white; margin-top: 20px;">
 </form>
 
+<script type="text/javascript"  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript"> emailjs.init('77o0jYfFOfzNdg3Mj')</script>
 
       
   </main>
