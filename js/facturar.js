@@ -246,7 +246,7 @@ function cambioSelect(p) {
       logo.style.display = "inline";
       error.style.display = "none";
     } else if (tipo === "mastercard") {
-      logo.src = "";
+      logo.src = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
       logo.style.display = "inline";
       error.style.display = "none";
     } else {
@@ -257,23 +257,4 @@ function cambioSelect(p) {
   }
   
 
-  const btn = document.getElementById('button');
-
-  document.getElementById('form')
-   .addEventListener('submit', function(event) {
-     event.preventDefault();
-  
-     btn.value = 'Sending...';
-  
-     const serviceID = 'default_service';
-     const templateID = 'template_icc09wk';
-  
-     emailjs.sendForm(serviceID, templateID, this)
-      .then(() => {
-        btn.value = 'Send Email';
-        alert('Sent!');
-      }, (err) => {
-        btn.value = 'Send Email';
-        alert(JSON.stringify(err));
-      });
-  });
+// EMAIL JS _____________________________________________________________________________________________________________________________
