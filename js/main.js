@@ -17,49 +17,75 @@
   /**
    * Mobile nav toggle
    */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    
+    if (mobileNavToggleBtn) {
+      function mobileNavToogle() {
+        document.querySelector('body').classList.toggle('mobile-nav-active');
+        mobileNavToggleBtn.classList.toggle('bi-list');
+        mobileNavToggleBtn.classList.toggle('bi-x');
       }
-    });
-
+      
+      mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    
+      /**
+       * Hide mobile nav on same-page/hash links
+       */
+      document.querySelectorAll('#navmenu a').forEach(navlink => {
+        navlink.addEventListener('click', () => {
+          if (document.querySelector('.mobile-nav-active')) {
+            mobileNavToogle();
+          }
+        });
+      });
+    
+      /**
+       * Toggle mobile nav dropdowns
+       */
+      const dropdownToggles = document.querySelectorAll('.navmenu .dropdown .toggle-dropdown');
+      
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle active class on the parent dropdown li
+          this.closest('li.dropdown').classList.toggle('active');
+          
+          // Find the submenu and toggle its visibility
+          const dropdownMenu = this.closest('li.dropdown').querySelector('ul');
+          if (dropdownMenu) {
+            dropdownMenu.classList.toggle('dropdown-active');
+          }
+          
+          // Toggle the icon rotation if needed
+          this.classList.toggle('active');
+        });
+      });
+      
+      /**
+       * Close mobile nav when clicking outside
+       */
+      document.addEventListener('click', function(e) {
+        if (document.querySelector('.mobile-nav-active') && 
+            !e.target.closest('.navmenu') && 
+            !e.target.closest('.mobile-nav-toggle')) {
+          mobileNavToogle();
+        }
+      });
+    }
+  
+    /**
+     * Preloader
+     */
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
+      window.addEventListener('load', () => {
+        preloader.remove();
+      });
+    }
   });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
-
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
   /**
    * Scroll top button
   

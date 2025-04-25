@@ -170,80 +170,15 @@ h6 {
 .scrolled .header {
   --background-color: #cab1d0;
 }
-/* Seccion accesorios Inicio*/
-.seccion-accesorios {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 50px 20px;
-  background-color: #f8f8f8;
-}
 
-.seccion-accesorios a {
-  width: 30%;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.accesorio {
-  width: 100%;
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-  cursor: pointer; /* Le da efecto de botón */
-  transition: transform 0.3s ease;
-}
-
-.accesorio:hover {
-  transform: scale(1.03);
-}
-
-.accesorio img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-}
-
-.accesorio h3 {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-
-/* Desplazamiento suave */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Diseño adaptable */
-@media (max-width: 768px) {
-  .accesorio {
-      width: 45%;
-  }
-}
-
-@media (max-width: 480px) {
-  .accesorio {
-      width: 100%;
-  }
-}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
+  .mobile-nav-toggle {
+    display: none;
+  }
   .navmenu {
     padding: 0;
   }
@@ -353,13 +288,34 @@ html {
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
-    color: var(--nav-color);
-    font-size: 28px;
-    line-height: 0;
-    margin-right: 10px;
+    display: block !important ;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    border: none;
+  
+    background: transparent;
+    font-size: 24px;
     cursor: pointer;
-    transition: color 0.3s;
+    
+    color: var(--nav-color);
+    transition: all 0.3s;
   }
+  /* Estilos para cuando el menú móvil está activo */
+  body.mobile-nav-active {
+    overflow: hidden;
+  }
+  
+  body.mobile-nav-active .navmenu ul {
+    display: block !important;
+  }
+  
+  body.mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    
+  }
+
 
   .navmenu {
     padding: 0;
@@ -367,18 +323,16 @@ html {
   }
 
   .navmenu ul {
-    display: none;
-    list-style: none;
-    position: absolute;
-    inset: 60px 20px 20px 20px;
-    padding: 10px 0;
-    margin: 0;
+    display: none !important; /* Menú oculto por defecto */
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    background: #fff;
+    padding: 10px;
     border-radius: 6px;
-    background-color: var(--nav-mobile-background-color);
-    overflow-y: auto;
-    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 9998;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
 
   .navmenu a,
@@ -462,6 +416,7 @@ html {
     right: 15px;
     margin-right: 0;
     z-index: 9999;
+    display: none;
   }
 
   .mobile-nav-active .navmenu {
