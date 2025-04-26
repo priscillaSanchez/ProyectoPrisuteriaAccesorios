@@ -96,8 +96,8 @@
         <hr>
       `;
     }).join('') + `
+    <button onclick="finalizarCompra()">Finalizar compra</button>
       <h3>Total: ₡${total.toLocaleString()} CRC</h3>
-      <button onclick="finalizarCompra()">Finalizar compra</button>
     `;
   }
   
@@ -171,7 +171,64 @@
   }
   
   function finalizarCompra() {
-    alert("¡Gracias por tu compra! 🛍️");
-    localStorage.removeItem('carrito');
-    location.reload();
+    // Mostrar el formulario de compra
+    document.getElementById('formularioCompra').style.display = 'block';
+    // Hacer scroll suave hasta el formulario
+    document.getElementById('formularioCompra').scrollIntoView({ behavior: 'smooth' });
+  
+    // Opcionalmente, si quieres ocultar el carrito después de mostrar el formulario
+    document.getElementById('carritoContainer').style.display = 'none';
   }
+  //-------------------------------------------------------------------------------------------------------------------EMAILJS
+  document.getElementById("formularioCompra").addEventListener("submit", function (event) {
+    event.preventDefault();
+  
+  
+    const nombre = document.getElementById("nombres").value || 'No especificado';
+    const email = document.querySelector('input[name="email"]').value || 'No especificado';
+  
+    const prov = document.getElementById("prov");
+    const can = document.getElementById("can");
+    const dis = document.getElementById("dis");
+    const provincia = prov.options[prov.selectedIndex]?.text || 'No especificado';
+    const canton = can.options[can.selectedIndex]?.text || 'No especificado';
+    const distrito = dis.options[dis.selectedIndex]?.text || 'No especificado';
+    const metodoPago = document.querySelector('input[name="metodo-pago"]:checked')?.value || 'No especificado';
+  
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    console.log("Carrito al momento de enviar:", carrito);
+  
+    const productos_comprados = carrito.length > 0
+      ? carrito.map(producto => `${producto.titulo} - Cantidad: ${producto.cantidad} - Precio: ₡${producto.precio}`).join('\n')
+      : "No hay productos en el carrito.";
+  
+    const total_compra = carrito.reduce((acc, p) => acc + (p.precio * p.cantidad), 0).toLocaleString();
+  
+    const templateParams = {
+      nombre_cliente: nombre,
+      correo_cliente: email,
+      direccion_completa: `${provincia}, ${canton}, ${distrito}`,
+      metodo_pago: metodoPago,
+      productos_comprados: productos_comprados,
+      total_compra: total_compra
+    };
+  
+    emailjs.send(
+      'default_service',
+      'template_icc09wk',
+      templateParams,
+      '77o0jYfFOfzNdg3Mj'
+    ).then(function (response) {
+      console.log('Correo enviado exitosamente', response);
+      alert("Gracias por tu compra. El correo de confirmación fue enviado.");
+    
+      // Solo aquí limpiamos el carrito y recargamos
+      localStorage.removeItem('carrito');
+      document.getElementById("formularioCompra").reset();
+      location.reload();
+    }, function (error) {
+      console.log('Error al enviar el correo', error);
+      alert("Hubo un error al enviar el correo. Intenta nuevamente.");
+    });
+  });
+  
