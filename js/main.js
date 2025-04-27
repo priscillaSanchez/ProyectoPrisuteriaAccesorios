@@ -1,5 +1,5 @@
-(function() {
-  "use strict";
+(function() { //Ejecuta el código automáticamente y lo aísla
+  "use strict"; // código sea más seguro y limpio
 
   /**
    * Apply .scrolled class to the body as the page is scrolled down
@@ -86,28 +86,7 @@
       });
     }
   });
-  /**
-   * Scroll top button
-  
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
-    }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
- */
-
+  /*
   
   /**
    * Animation on scroll function and init
@@ -294,15 +273,3 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("Índice actualizado:", currentIndex, "Transform:", `translateX(-${currentIndex * itemWidth}px)`);
   }
 })
-
-  // Asignar eventos a los botones
-//  const leftArrow = document.querySelector(".arrow-left");
- // const rightArrow = document.querySelector(".arrow-right");
-
-//  if (leftArrow && rightArrow) {
-//      leftArrow.addEventListener("click", () => moveSlide(-1));
-  //    rightArrow.addEventListener("click", () => moveSlide(1));
-//  } else {
-    //  console.error("No se encontraron los botones");
-//  }
-//})

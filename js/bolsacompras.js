@@ -1,7 +1,7 @@
     document.addEventListener('DOMContentLoaded', () => {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // recuperación del carrito desde localStorage
   
-    function agregarProducto(e) {
+    function agregarProducto(e) { //Agregar productos al carrito
       const card = e.target.closest('.product-card');
       const titulo = card.querySelector('.product-title').innerText;
       const precioTexto = card.querySelector('.product-price').innerText;
@@ -33,7 +33,7 @@
 }
 
 
-    function actualizarContador() {
+    function actualizarContador() { //Actualizar el contador de productos en el carrito
       const contador = document.getElementById('contadorCarrito');
       const totalProductos = carrito.reduce((total, p) => total + p.cantidad, 0);
       contador.innerText = totalProductos;
@@ -55,7 +55,7 @@
   });
 
 
-
+//Mostrar el carrito de compras
 
   document.addEventListener('DOMContentLoaded', () => {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -71,6 +71,7 @@
     actualizarContadorCarrito();
   });
   
+  //Mostrar los productos en el carrito
   function mostrarCarrito(carrito) {
     const contenedor = document.getElementById('carritoContainer');
     let total = 0;
