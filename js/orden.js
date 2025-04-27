@@ -1,6 +1,5 @@
 function finalizarCompra() {
-  // Limpiar carrito
-  localStorage.removeItem('carrito');
+ // localStorage.removeItem('carrito');
 
   // Mostrar el formulario
   document.getElementById('formularioCompra').style.display = 'block';
