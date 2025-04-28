@@ -181,165 +181,114 @@
     document.getElementById('carritoContainer').style.display = 'none';
   }
   //-------------------------------------------------------------------------------------------------------------------EMAILJS
-
   document.addEventListener('DOMContentLoaded', function () {
-    const radioTarjeta = document.getElementById('tarjeta-credito');
-    const radioSinpe = document.getElementById('SINPE');
-  
+    const radioTarjeta      = document.getElementById('tarjeta-credito');
+    const radioSinpe        = document.getElementById('SINPE');
     const formularioTarjeta = document.getElementById('formulario-tarjeta');
-    const mensajeSinpe = document.getElementById('mensaje-sinpe');
-    const formularioCompra = document.getElementById('formularioCompra');
+    const mensajeSinpe      = document.getElementById('mensaje-sinpe');
+    const formularioCompra  = document.getElementById('formularioCompra');
+    const btnEnviar         = document.getElementById('button');
+    const valorOriginalBtn  = btnEnviar ? btnEnviar.value : 'Enviar';
   
-    // Función para actualizar la visibilidad de los campos según el método de pago
+    // 1) Mostrar/ocultar campos según método de pago
     function actualizarMetodoPago() {
       if (radioTarjeta.checked) {
         formularioTarjeta.style.display = 'block';
-        mensajeSinpe.style.display = 'none';
-        
-        // Hacer obligatorios los campos de tarjeta
-        document.getElementById('tarjeta').required = true;
-        document.getElementById('numero-tarjeta').required = true;
-        document.getElementById('tarjeta-expiracion').required = true;
-        document.getElementById('tarjeta-cvv').required = true;
-      } else if (radioSinpe.checked) {
+        mensajeSinpe.style.display       = 'none';
+        ['tarjeta','numero-tarjeta','tarjeta-expiracion','tarjeta-cvv']
+          .forEach(id => document.getElementById(id).required = true);
+      } else {
         formularioTarjeta.style.display = 'none';
-        mensajeSinpe.style.display = 'block';
-        
-        // Quitar obligatoriedad de los campos de tarjeta
-        document.getElementById('tarjeta').required = false;
-        document.getElementById('numero-tarjeta').required = false;
-        document.getElementById('tarjeta-expiracion').required = false;
-        document.getElementById('tarjeta-cvv').required = false;
+        mensajeSinpe.style.display       = 'block';
+        ['tarjeta','numero-tarjeta','tarjeta-expiracion','tarjeta-cvv']
+          .forEach(id => document.getElementById(id).required = false);
       }
     }
-  
-    // Escuchar los cambios de los radio buttons para el método de pago
     radioTarjeta.addEventListener('change', actualizarMetodoPago);
-    radioSinpe.addEventListener('change', actualizarMetodoPago);
+    radioSinpe.addEventListener('change',   actualizarMetodoPago);
+    actualizarMetodoPago(); // al cargar
   
-    // Ejecutar la función al cargar la página
-    actualizarMetodoPago();
-    
-    // Función para vaciar el carrito y actualizar la UI
-    function vaciarCarritoYActualizarUI() {
-      // Vaciar el carrito en localStorage
-      localStorage.removeItem('carrito');
-      
-      // Ocultar el formulario de compra
-      formularioCompra.style.display = 'none';
-      
-      // Reiniciar el formulario
-      formularioCompra.reset();
-      
-      // Obtener el contenedor del carrito y actualizarlo
-      const contenedorCarrito = document.getElementById('contenedorCarrito') || 
-                               document.querySelector('.carrito-container') || 
-                               document.querySelector('.cart-items');
-      
-      if (contenedorCarrito) {
-        contenedorCarrito.innerHTML = '<p>No hay productos en el carrito</p>';
-      }
-      
-      // Actualizar cualquier contador de carrito si existe
-      const contadorCarrito = document.getElementById('contador-carrito') || 
-                             document.querySelector('.cart-count');
-      if (contadorCarrito) {
-        contadorCarrito.textContent = '0';
-      }
-      
-      // Actualizar el total si existe
-      const totalCarrito = document.getElementById('total-carrito') || 
-                          document.querySelector('.cart-total');
-      if (totalCarrito) {
-        totalCarrito.textContent = '₡0.00';
-      }
-      
-      // Si tienes un elemento que muestra/oculta dependiendo de si hay productos
-      const carritoVacio = document.querySelector('.carrito-vacio');
-      const carritoLleno = document.querySelector('.carrito-lleno');
-      
-      if (carritoVacio) carritoVacio.style.display = 'block';
-      if (carritoLleno) carritoLleno.style.display = 'none';
-      
-      // Si hay un botón de finalizar compra, ocultarlo
-      const btnFinalizarCompra = document.getElementById('btnFinalizarCompra');
-      if (btnFinalizarCompra) btnFinalizarCompra.style.display = 'none';
-    }
-    
-    // Enviar el correo de confirmación al momento de hacer submit
+    // 2) Al enviar el formulario, mandar email y luego eliminar todos los productos del carrito
     formularioCompra.addEventListener('submit', function (event) {
       event.preventDefault();
-      
-      const nombre = document.getElementById("nombres").value || 'No especificado';
-      const email = document.querySelector('input[name="email"]').value || 'No especificado';
-    
-      const prov = document.getElementById("prov");
-      const can = document.getElementById("can");
-      const dis = document.getElementById("dis");
-      const provincia = prov.options[prov.selectedIndex]?.text || 'No especificado';
-      const canton = can.options[can.selectedIndex]?.text || 'No especificado';
-      const distrito = dis.options[dis.selectedIndex]?.text || 'No especificado';
+  
+      // — recolectar datos —
+      const nombre     = document.getElementById("nombres").value || 'No especificado';
+      const email      = document.querySelector('input[name="email"]').value || 'No especificado';
+      const prov       = document.getElementById("prov");
+      const can        = document.getElementById("can");
+      const dis        = document.getElementById("dis");
+      const provincia  = prov.options[prov.selectedIndex]?.text || 'No especificado';
+      const canton     = can.options[can.selectedIndex]?.text || 'No especificado';
+      const distrito   = dis.options[dis.selectedIndex]?.text || 'No especificado';
       const metodoPago = document.querySelector('input[name="metodo-pago"]:checked')?.value || 'No especificado';
   
-      // Obtener los productos del carrito
-      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      const productos_comprados = carrito.length > 0
-        ? carrito.map(producto => `${producto.titulo || producto.nombre} - Cantidad: ${producto.cantidad} - Precio: ₡${producto.precio}`).join('\n')
+      // — productos y total —
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const productos_comprados = carrito.length
+        ? carrito.map(p => `${p.titulo||p.nombre} x${p.cantidad} - ₡${p.precio}`).join('\n')
         : "No hay productos en el carrito.";
+      const total_compra = carrito.reduce((sum,p)=> sum + p.precio*p.cantidad, 0).toLocaleString();
   
-      const total_compra = carrito.reduce((acc, p) => acc + (p.precio * p.cantidad), 0).toLocaleString();
-  
-      // Crear parámetros básicos para la plantilla
+      // — preparar params para EmailJS —
       const templateParams = {
-        nombre_cliente: nombre,
-        correo_cliente: email,
-        direccion_completa: `${provincia}, ${canton}, ${distrito}`,
-        metodo_pago: metodoPago,
-        productos_comprados: productos_comprados,
-        total_compra: total_compra
+        nombre_cliente:    nombre,
+        correo_cliente:    email,
+        direccion_completa:`${provincia}, ${canton}, ${distrito}`,
+        metodo_pago:       metodoPago,
+        productos_comprados,
+        total_compra
       };
   
-      // Si el método es tarjeta, añadir información de tarjeta
+      // — si es tarjeta, añadir datos enmascarados —
       if (metodoPago === "Tarjeta de Crédito") {
         const nombreTarjeta = document.getElementById('tarjeta').value;
-        const numeroTarjeta = document.getElementById('numero-tarjeta').value;
-        const expiracion = document.getElementById('tarjeta-expiracion').value;
-        
-        // Enmascarar el número de tarjeta por seguridad
-        const numeroTarjetaEnmascarado = numeroTarjeta.replace(/\d(?=\d{4})/g, "*");
-        
-        templateParams.tarjeta_nombre = nombreTarjeta;
-        templateParams.tarjeta_numero = numeroTarjetaEnmascarado;
+        const numeroTarj    = document.getElementById('numero-tarjeta').value;
+        const expiracion    = document.getElementById('tarjeta-expiracion').value;
+        templateParams.tarjeta_nombre      = nombreTarjeta;
+        templateParams.tarjeta_numero     = numeroTarj.replace(/\d(?=\d{4})/g, "*");
         templateParams.tarjeta_expiracion = expiracion;
       }
-      
-      // Botón de envío
-      const btnEnviar = document.getElementById('button');
-      const valorOriginalBtn = btnEnviar ? btnEnviar.value : 'Enviar';
+  
+      // — cambiar texto del botón —
       if (btnEnviar) btnEnviar.value = 'Enviando...';
-      
-      // Enviar el email
-      emailjs.send(
-        'default_service',
-        'template_icc09wk',
-        templateParams,
-        '77o0jYfFOfzNdg3Mj'
-      ).then(function (response) {
-        console.log('Correo enviado exitosamente', response);
-        
-        // Mostrar mensaje de éxito
-        alert("¡Gracias por tu compra! Te hemos enviado un correo con los detalles.");
-        
-        // Vaciar carrito y actualizar UI
-        vaciarCarritoYActualizarUI();
-        
-        
-      }, function (error) {
-        console.log('Error al enviar el correo', error);
-        alert("Hubo un error al procesar tu compra. Por favor intenta nuevamente.");
-        
-        // Restablecer el botón
-        if (btnEnviar) btnEnviar.value = valorOriginalBtn;
-      });
+  
+      // — enviar email —
+      emailjs.send('default_service', 'template_icc09wk', templateParams, '77o0jYfFOfzNdg3Mj')
+        .then(response => {
+          alert("¡Gracias por tu compra! Revisa tu correo.");
+  
+          // eliminar todos los productos del carrito uno a uno
+          let currentCart = JSON.parse(localStorage.getItem('carrito')) || [];
+          for (let i = currentCart.length - 1; i >= 0; i--) {
+            eliminarProducto(i);
+          }
+  
+          if (btnEnviar) btnEnviar.value = valorOriginalBtn;
+        }, error => {
+          alert("Error al procesar la compra. Intenta nuevamente.");
+          if (btnEnviar) btnEnviar.value = valorOriginalBtn;
+        });
     });
   });
+  
+  // 3) Función para eliminar un producto del carrito por índice y actualizar UI
+  function eliminarProducto(index) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  
+    const contenedor = document.getElementById('carritoContainer');
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p>Tu bolsa está vacía</p>';
+    } else {
+      mostrarCarrito(carrito);
+    }
+    actualizarContadorCarrito();
+  
+    // Si el formulario de compra está abierto, cerrarlo
+    const formularioCompra = document.getElementById('formularioCompra');
+    if (formularioCompra && formularioCompra.style.display === 'block') {
+      formularioCompra.style.display = 'none';
+    }
+  }
