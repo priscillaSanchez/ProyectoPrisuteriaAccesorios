@@ -226,7 +226,7 @@
       // — productos y total —
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       const productos_comprados = carrito.length
-        ? carrito.map(p => `${p.titulo||p.nombre} x${p.cantidad} - ₡${p.precio}`).join('\n')
+        ? carrito.map(p => `${p.titulo||p.nombre} - Cantidad : ${p.cantidad} - ₡${p.precio}`).join('\n')
         : "No hay productos en el carrito.";
       const total_compra = carrito.reduce((sum,p)=> sum + p.precio*p.cantidad, 0).toLocaleString();
   
