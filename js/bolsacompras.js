@@ -333,10 +333,6 @@
         // Vaciar carrito y actualizar UI
         vaciarCarritoYActualizarUI();
         
-        // Opcional: recargar la página o redirigir después de un breve retraso
-        setTimeout(() => {
-          window.location.href = window.location.pathname; // Recargar sin parámetros de URL
-        }, 1000);
         
       }, function (error) {
         console.log('Error al enviar el correo', error);
