@@ -26,6 +26,7 @@ function buscarContribuyente() {
         if (data.nombre) {
           const nombreInput = document.getElementById('nombres');
           nombreInput.value = data.nombre;
+          
           nombreInput.style.display = 'block'; // ← Esto muestra el input
         } else {
           alert('No se encontró el nombre en la respuesta.');

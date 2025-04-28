@@ -195,32 +195,6 @@ function cambioSelect(p) {
 
 
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const radioTarjeta = document.getElementById('tarjeta-credito');
-    const radioSinpe = document.getElementById('SINPE');
-
-    const formularioTarjeta = document.getElementById('formulario-tarjeta');
-    const mensajeSinpe = document.getElementById('mensaje-sinpe');
-
-    function actualizarMetodoPago() {
-      if (radioTarjeta.checked) {
-        formularioTarjeta.style.display = 'block';
-        mensajeSinpe.style.display = 'none';
-      } else if (radioSinpe.checked) {
-        formularioTarjeta.style.display = 'none';
-        mensajeSinpe.style.display = 'block';
-      }
-    }
-
-    // Escuchar los cambios
-    radioTarjeta.addEventListener('change', actualizarMetodoPago);
-    radioSinpe.addEventListener('change', actualizarMetodoPago);
-
-    // Ejecutar al inicio
-    actualizarMetodoPago();
-  });
-
-
 //detectar tarjeta
   function detectarTipoTarjeta(input) {
     const valor = input.value.replace(/\s+/g, '');
@@ -256,5 +230,3 @@ function cambioSelect(p) {
     }
   }
   
-
-// EMAIL JS _____________________________________________________________________________________________________________________________
